@@ -1,20 +1,27 @@
 # Lotto Number Generator
 
 ## Project Overview
-A simple, interactive web application that generates 6 unique random numbers (1-45) for the lottery. The numbers are displayed in colored circles, with colors determined by the number range.
+A premium, interactive web application that generates 5 sets of unique random numbers (1-45) for the lottery. The design is modern, responsive, and features interactive animations.
 
 ## Features & UI Components
-- **Lotto Number Generation**: Generates 6 unique numbers from 1 to 45.
-- **Sorted Display**: Numbers are displayed in ascending order.
-- **Range-Based Coloring**:
-  - 1-10: Red
-  - 11-20: Orange
-  - 21-30: Yellow
-  - 31-40: Green
-  - 41-45: Blue
-- **Responsive Layout**: Centered UI using Flexbox.
+- **Multi-Set Generation**: Generates 5 rows of 6 unique numbers (1-45) in a single click.
+- **Modern UI Design**:
+  - Glassmorphism effects (backdrop-filter).
+  - Vibrant gradients for headings and buttons.
+  - Custom Inter typography from Google Fonts.
+  - Interactive hover effects and staggered entry animations.
+- **Dynamic Range-Based Coloring**:
+  - 1-10: Yellow gradient (n-1)
+  - 11-20: Blue gradient (n-2)
+  - 21-30: Red gradient (n-3)
+  - 31-40: Gray gradient (n-4)
+  - 41-45: Green gradient (n-5)
+- **Mobile Responsive**: Adapts layout and sizing for smaller screens.
 
-## Current Plan (March 24, 2026)
-1. **Initial Code Setup**: Created HTML structure, CSS styling, and JavaScript logic.
-2. **Git Configuration**: Configured remote repository and pushed initial version to GitHub.
-3. **Repository Management**: Added `.gitignore` to exclude log files.
+## Technical Details
+- **CSS**: Uses CSS Variables, Flexbox, Animations, and Radial Gradients.
+- **JS**: Uses `Set` for uniqueness, `async/await` for potential timing control, and DOM manipulation for dynamic row creation.
+
+## Progress
+1. **v1.0**: Basic generation logic and simple UI.
+2. **v2.0**: Enhanced design with Glassmorphism, 5-set generation, and animations.

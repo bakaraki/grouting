@@ -1,37 +1,154 @@
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #a855f7;
+  --background-bg: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* Lotto Colors */
+  --lotto-1: #facc15; /* Yellow */
+  --lotto-2: #3b82f6; /* Blue */
+  --lotto-3: #ef4444; /* Red */
+  --lotto-4: #94a3b8; /* Gray */
+  --lotto-5: #22c55e; /* Green */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  background-color: var(--background-bg);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f0f0f0;
+  padding: 20px;
 }
 
 .container {
+  width: 100%;
+  max-width: 600px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   text-align: center;
 }
 
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.025em;
+}
+
+p.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
 #generator-btn {
-  padding: 10px 20px;
-  font-size: 1.2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 16px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  margin-bottom: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#generator-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+#generator-btn:active {
+  transform: translateY(0);
 }
 
 #lotto-numbers-container {
-  margin-top: 20px;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.lotto-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  animation: slideUp 0.4s ease-out backwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .lotto-number {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background-color: #fff;
-  border: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease;
+}
+
+.lotto-number:hover {
+  transform: scale(1.1);
+}
+
+/* Dynamic colors based on number ranges */
+.n-1 { background: radial-gradient(circle at 30% 30%, #fde047, #eab308); color: #854d0e; } /* 1-10 */
+.n-2 { background: radial-gradient(circle at 30% 30%, #60a5fa, #2563eb); } /* 11-20 */
+.n-3 { background: radial-gradient(circle at 30% 30%, #f87171, #dc2626); } /* 21-30 */
+.n-4 { background: radial-gradient(circle at 30% 30%, #94a3b8, #475569); } /* 31-40 */
+.n-5 { background: radial-gradient(circle at 30% 30%, #4ade80, #16a34a); } /* 41-45 */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+  }
+  .lotto-number {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  .lotto-row {
+    gap: 0.4rem;
+  }
 }

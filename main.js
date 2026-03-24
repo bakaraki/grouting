@@ -1,32 +1,42 @@
 const generatorBtn = document.getElementById('generator-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers-container');
 
-generatorBtn.addEventListener('click', () => {
-  lottoNumbersContainer.innerHTML = '';
+function generateLottoSet() {
   const numbers = new Set();
   while (numbers.size < 6) {
     numbers.add(Math.floor(Math.random() * 45) + 1);
   }
+  return Array.from(numbers).sort((a, b) => a - b);
+}
 
-  const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+function getRangeClass(number) {
+  if (number <= 10) return 'n-1';
+  if (number <= 20) return 'n-2';
+  if (number <= 30) return 'n-3';
+  if (number <= 40) return 'n-4';
+  return 'n-5';
+}
 
-  for (const number of sortedNumbers) {
-    const circle = document.createElement('div');
-    circle.classList.add('lotto-number');
-    circle.textContent = number;
+async function displaySets() {
+  lottoNumbersContainer.innerHTML = '';
+  
+  for (let i = 0; i < 5; i++) {
+    const numbers = generateLottoSet();
+    const row = document.createElement('div');
+    row.classList.add('lotto-row');
+    row.style.animationDelay = `${i * 0.1}s`;
 
-    if (number <= 10) {
-      circle.style.backgroundColor = '#f44336';
-    } else if (number <= 20) {
-      circle.style.backgroundColor = '#ff9800';
-    } else if (number <= 30) {
-      circle.style.backgroundColor = '#ffeb3b';
-    } else if (number <= 40) {
-      circle.style.backgroundColor = '#4caf50';
-    } else {
-      circle.style.backgroundColor = '#2196f3';
-    }
+    numbers.forEach((num) => {
+      const circle = document.createElement('div');
+      circle.classList.add('lotto-number', getRangeClass(num));
+      circle.textContent = num;
+      row.appendChild(circle);
+    });
 
-    lottoNumbersContainer.appendChild(circle);
+    lottoNumbersContainer.appendChild(row);
+    // Optional: add a small delay if we want them to "pop" in one by one
+    // await new Promise(resolve => setTimeout(resolve, 100));
   }
-});
+}
+
+generatorBtn.addEventListener('click', displaySets);
