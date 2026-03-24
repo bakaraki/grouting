@@ -13,6 +13,7 @@ A premium, interactive web application that generates 5 sets of unique random nu
   - Vibrant gradients for headings and buttons.
   - Custom Inter typography from Google Fonts.
   - Interactive hover effects and staggered entry animations.
+  - Beautiful natural landscape background from Unsplash, dynamically overlaid to suit both light and dark modes.
 - **Dynamic Range-Based Coloring**:
   - 1-10: Yellow (n-1)
   - 11-20: Blue (n-2)
@@ -31,3 +32,8 @@ A premium, interactive web application that generates 5 sets of unique random nu
 1. **v1.0**: Basic generation logic and simple UI.
 2. **v2.0**: Enhanced design with Glassmorphism, 5-set generation, and animations.
 3. **v2.1**: Added Dark/Light mode toggle and theme persistence.
+4. **v2.2**: Replaced static radial gradient background with a high-quality nature landscape image.
+
+## Current Plan
+- Added an Unsplash nature background to the `body` tag in `style.css`.
+- Configured dynamic overlay logic using `--bg-overlay` variables for light and dark modes to maintain text readability.
