@@ -1,6 +1,25 @@
 const generatorBtn = document.getElementById('generator-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers-container');
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 
+// --- Theme Logic ---
+const currentTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
+
+themeToggle.addEventListener('click', () => {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  updateThemeIcon(theme);
+});
+
+function updateThemeIcon(theme) {
+  themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+// --- Lotto Logic ---
 function generateLottoSet() {
   const numbers = new Set();
   while (numbers.size < 6) {
@@ -34,8 +53,6 @@ async function displaySets() {
     });
 
     lottoNumbersContainer.appendChild(row);
-    // Optional: add a small delay if we want them to "pop" in one by one
-    // await new Promise(resolve => setTimeout(resolve, 100));
   }
 }
 
